@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "zut.edu.cn.notepad" //包名 可在此修改
+        minSdkVersion 15                   //最低兼容Android 4.0
+        targetSdkVersion 28                //在该版本上已经做过了充分测试
+        versionCode 1                      //项目版本号
+        versionName "1.0"                  //项目版本名 这两个在生成安装文件的时候非常重要
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false            //是否对项目的代码进行混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        } //指定混淆时使用的规则文件 前者在Android SDK目录下 是项目通用 后者在当前项目根目录下 是当前项目特有
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])//本地依赖声明 表示将libs下所有.jar都添加到项目构建路径中
+    implementation 'com.android.support:appcompat-v7:28.0.0'//远程依赖库
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'// 声明测试用例库的
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.4.2'
+    implementation 'com.google.code.gson:gson:2.2.4'
+
+    //implementation 'com.squareup.okhttp3:benchmarks:3.12.5'
+    //implementation 'com.google.code.gson:gson:2.8.6'
+
+}
+// Android studio3.0中 compile依赖关系已被弃用，被implementationt替代 我这个是3.4.2的
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg19">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="请输入要查询的英文单词"
+        android:id="@+id/et"/>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/et" />
+
+    <Button
+        android:id="@+id/t"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv"
+        android:layout_marginTop="-41dp"
+        android:background="#A9A9A9"
+        android:onClick="query"
+        android:text="查询"
+        android:textColor="#3F51B5"
+        android:textSize="18sp" />
+
+    <Button
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/t"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="20dp"
+        android:background="#A9A9A9"
+        android:onClick="back"
+        android:text="返回"
+        android:textColor="#009688"
+        android:textSize="18sp" />
+    </RelativeLayout>
