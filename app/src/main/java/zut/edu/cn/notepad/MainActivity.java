@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("备份", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                MyThread myThread = new MyThread();
+                                new Thread(myThread).start();
                                 Toast.makeText(MainActivity.this, "数据已备份", Toast.LENGTH_SHORT).show();
                             }
                         })
@@ -60,10 +63,49 @@ public class MainActivity extends AppCompatActivity {
             case R.id.map:
                 Intent intent5 = new Intent(MainActivity.this, LBSActivity.class);
                 startActivity(intent5);
-            default:
+                break;
+//            case R.id.restore:
+//                Intent intent6 = new Intent(MainActivity.this, LBSActivity.class);
+//                startActivity(intent6);
+//            default:
         }
         return true;
     }
+
+    class MyThread implements Runnable{
+        @Override
+        public void run() {
+            SQLiteDatabase db = myDb.getReadableDatabase();
+
+            //查询数据库中的数据
+            Cursor cursor = db.query(DBService.TABLE,null,null,
+                    null,null,null,null);
+            DBUtils dbUtils = new DBUtils();
+            dbUtils.clearNote();
+            if(cursor.moveToFirst()){
+
+                while (!cursor.isAfterLast()) {//判断当前指针是否已经到最后一条记录的下一个若是则返回true
+
+
+                    String title = cursor.getString(cursor.getColumnIndex(DBService.TITLE));
+                    String content = cursor.getString(cursor.getColumnIndex(DBService.CONTENT));
+                    String datetime = cursor.getString(cursor.getColumnIndex(DBService.TIME));
+
+                    cursor.moveToNext();
+                    Log.d("MainActivity",title);
+                    Log.d("MainActivity",content);
+                    Log.d("MainActivity",datetime);
+
+                    dbUtils.insertNote(title, content, datetime);
+
+                }
+            }
+        }
+    }
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

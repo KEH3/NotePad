@@ -23,9 +23,14 @@
         android:title="百度地图"
         app:showAsAction="never" />
     <item
-        android:id="@+id/lookup"
+    android:id="@+id/lookup"
+    android:icon="@drawable/ic_menu"
+    android:title="查单词"
+    app:showAsAction="never"/>
+    <item
+        android:id="@+id/restore"
         android:icon="@drawable/ic_menu"
-        android:title="查单词"
+        android:title="恢复数据"
         app:showAsAction="never"/>
 
 </menu>
