@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg17">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="472dp"
+        android:singleLine="false"
+        android:text=" 这是记事本正式版1.0 感谢您的使用！\n\n1.记事本可以记录日常的一些随笔 想法 永久保存随时查看\n2.提供最近删除功能可以避免误删\n3.在同一局域网下可备份到本机MySQL数据库，程序卸载数据依然可以保留\n4.此外还提供单词查询 地图定位 访问百度主页的一些小功能"
+        android:textColor="#808080"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/copyright"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:singleLine="false"
+        android:text="              by Wang Zhuo Jian \n    Copyright © 2019. All rights reserved. "
+        android:textColor="#DCDCDC"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/BACK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="#000000"
+        android:text="返回"
+        android:textColor="#A9A9A9"
+        android:textSize="18sp" />
+     </LinearLayout>

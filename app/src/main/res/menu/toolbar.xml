@@ -32,5 +32,10 @@
         android:icon="@drawable/ic_menu"
         android:title="恢复数据"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/ic_menu"
+        android:title="关于"
+        app:showAsAction="never"/>
 
 </menu>

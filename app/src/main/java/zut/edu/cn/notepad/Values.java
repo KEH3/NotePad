@@ -5,17 +5,6 @@ public class Values {
     private String title;
     private String content;
     private String time;
-    private boolean isChecked;
-
-
-    public boolean isChecked() {
-        return isChecked;
-    }
-
-    public void setChecked(boolean checked) {
-        isChecked = checked;
-    }
-
 
     public Integer getId() {
         return id;

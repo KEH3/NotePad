@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/bg12">
+        android:background="@drawable/bg18">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:gravity="left"
             android:paddingTop="10dp"
             android:paddingBottom="5dp"
-            android:text="批量删除"
+            android:text="最近删除"
             android:paddingLeft="10dp"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -34,15 +34,26 @@
             android:paddingTop="43dp"></ListView>
 
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_done"
+            app:backgroundTint="#AFEEEE" />
 
-         <com.google.android.material.floatingactionbutton.FloatingActionButton
-             android:id="@+id/done"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="bottom|end"
-             android:layout_margin="16dp"
-             android:src="@drawable/ic_done"
-             app:backgroundTint="#00BCD4" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_delete"
+            app:backgroundTint="#C0C0C0" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

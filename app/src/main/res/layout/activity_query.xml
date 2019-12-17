@@ -1,45 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg19">
-    <EditText
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="请输入要查询的英文单词"
-        android:id="@+id/et"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="请输入要查询内容（英汉互译）" />
+
+        <Button
+            android:id="@+id/t"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#B0C4DE"
+            android:onClick="query"
+            android:text="查询"
+            android:textColor="#3F51B5"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/et" />
+        android:layout_height="300dp" />
 
-    <Button
-        android:id="@+id/t"
-        style="@style/Widget.AppCompat.Button"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/tv"
-        android:layout_marginTop="-41dp"
-        android:background="#A9A9A9"
-        android:onClick="query"
-        android:text="查询"
-        android:textColor="#3F51B5"
-        android:textSize="18sp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <Button
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/t"
-        android:layout_marginTop="26dp"
-        android:layout_marginBottom="20dp"
-        android:background="#A9A9A9"
-        android:onClick="back"
-        android:text="返回"
-        android:textColor="#009688"
-        android:textSize="18sp" />
-    </RelativeLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="#A9A9A9"
+            android:onClick="back"
+            android:text="返回"
+            android:textColor="#009688"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

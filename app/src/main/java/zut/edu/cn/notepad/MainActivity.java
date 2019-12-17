@@ -1,11 +1,13 @@
 package zut.edu.cn.notepad;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,6 +30,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final int UPDATE_ITEM = 1;
 
     DBService myDb;
     private ListView lv_note;
@@ -64,10 +68,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent5 = new Intent(MainActivity.this, LBSActivity.class);
                 startActivity(intent5);
                 break;
-//            case R.id.restore:
-//                Intent intent6 = new Intent(MainActivity.this, LBSActivity.class);
-//                startActivity(intent6);
-//            default:
+            case R.id.restore:
+//                MyThread2 myThread2 = new MyThread2();
+//                new Thread(myThread2).start();
+                Toast.makeText(MainActivity.this, "假装正在恢复。。。（此功能仍在开发中）", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.about:
+                Intent intent6 = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent6);
+            default:
         }
         return true;
     }
@@ -105,7 +114,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+//    class MyThread2 implements Runnable{
+//        @Override
+//        public void run() {
+//            List<Values> MyValuesList;
+//            MyValuesList = new DBUtils().ShowAll();//遍历后mysql以对象数组的形式传过来了 但应如何将对象数组插入sqlite呢？
+//
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -192,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //双击删除
+        //长按删除
         lv_note.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -206,6 +222,13 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int which) {
                                         SQLiteDatabase db = myDb.getWritableDatabase();
                                         db.delete(DBService.TABLE,DBService.ID+"=?",new String[]{String.valueOf(values.getId())});
+                                         //contentvalues是内容值 而values是javabean对象 下面是为了删除的同时添加到最近删除
+                                        ContentValues contentvalues = new ContentValues();
+                                        contentvalues.put(DBService.TITLE,values.getTitle());
+                                        contentvalues.put(DBService.CONTENT,values.getContent());
+                                        contentvalues.put(DBService.TIME,values.getTime());
+                                        db.insert(DBService.TABLE2,null,contentvalues);
+
                                         db.close();
                                         myBaseAdapter.removeItem(position);
                                         lv_note.post(new Runnable() { //使用Runnalbe 把这个加入到消息队列里面去

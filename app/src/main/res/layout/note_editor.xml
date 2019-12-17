@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg13"
+    android:background="@drawable/bg16"
     android:orientation="vertical">
 
     <EditText
@@ -10,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="请输入标题">
+        android:hint="请输入标题"
+        android:textColor="#006400"
+        android:textSize="25sp">
+
         <requestFocus />
     </EditText>
     <TextView
@@ -20,13 +23,16 @@
         android:background="#d7d5d5"
         android:gravity="right"
         android:textSize="15sp"/>
+
     <EditText
         android:id="@+id/et_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:gravity="left"
         android:hint="请输入内容"
-        android:gravity="left"/>
+        android:textColor="#BDB76B"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

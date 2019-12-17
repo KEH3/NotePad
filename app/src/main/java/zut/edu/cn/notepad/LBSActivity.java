@@ -4,7 +4,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 
 import android.os.Bundle;
-import android.util.Log;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,6 +96,8 @@ public class LBSActivity extends AppCompatActivity {
 
     private void initLocation(){
         LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);//定位不精准 怎么办呢 亚于告诉我加上这两句就OK啦！真神奇~
+        option.setCoorType("bd09ll");//改成百度的编码格式 就成啦 真精准 不愧是你百度地图！
         option.setScanSpan(5000);
         option.setIsNeedAddress(true);
         mLocationClient.setLocOption(option);
